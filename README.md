@@ -8,4 +8,4 @@ Bike rental agency wants to be able to forecast the demand for bikes in next 3 d
 * Clone this repo to your computer.
 * Download the `data.zip` file.
 * Extract all of the .zip files you downloaded.
-* Download the .R files and run using R Studio. ALternatively, you can download .ipynb files to view the project. 
+* Download the .R files and run using R Studio. Alternatively, you can download .ipynb files to view the project. 
