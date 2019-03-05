@@ -43,12 +43,13 @@ head(next3days.df)
 train.df$DATE
 train.df$DAY.OF.WEEK
 
-bicup.lm <- tslm(train.ts~trend + DAY.OF.WEEK, data = train.df)
+bicup.lm <- tslm(train.ts~trend , data = train.df)
 bicup.lm.pred <- forecast(bicup.lm, h= 63*3, level=0,newdata = train.df$DAY.OF.WEEK)
 accuracy(valid.ts,bicup.lm.pred$mean)
 
 autoplot(bicup.lm.pred, ts.colour = '#868f98', predict.colour = '#d57946',
          predict.linetype = 'dashed', conf.int = FALSE)
 
-bicup.lm.fulldata <- tslm(bicup.ts~trend + , data = bicup.df[1:(21*63),])
+bicup.lm.fulldata <- tslm(bicup.ts~trend, data = bicup.df[1:(21*63),])
 bicup.lm.next3days <- forecast(bicup.lm.fulldata, h=63*3,level=0,newdata=next3days.df)
+autoplot(bicup.ts, ts.colour = '#868f98', xlab="time",ylab = "Demand",xlim = c(0,25)) + autolayer(bicup.lm$fitted) +autolayer(bicup.lm.next3days$mean)+autolayer(bicup.lm.pred$mean)
